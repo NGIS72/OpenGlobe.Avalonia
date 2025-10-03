@@ -3,7 +3,7 @@ OpenGlobe
 This is an updated version of the old [OpenGlobe](https://github.com/virtualglobebook/OpenGlobe) project.
 Current stack: .NET 6, SkiaSharp, OpenTK and Avalonia UI.
 
-There are problems with framebuffer!!!
+There are problems with framebuffer and textures (only on linux) !!!
 
 
 <center>
@@ -12,7 +12,7 @@ There are problems with framebuffer!!!
 
 **Note: OpenGlobe is great for learning along with our book, 3D Engine Design for Virtual Globes.  But for a production quality, open source, virtual globe by the same authors (plus more), check out [Cesium](https://cesiumjs.org)!**
 
-OpenGlobe is a 3D engine for virtual globes (think [Google Earth](http://earth.google.com) or [NASA World Wind](http://worldwind.arc.nasa.gov)) designed to illustrate the engine design and rendering techniques described in our book, [3D Engine Design for Virtual Globes](http://www.virtualglobebook.com).  It is written in C# (with full support for running on Linux using [Mono](http://www.mono-project.com)) and uses the OpenGL 3.3 core profile via [OpenTK](http://www.opentk.com).  It is not a complete virtual globe application, but is rather a core engine and a number of runnable examples.
+OpenGlobe is a 3D engine for virtual globes (think [Google Earth](http://earth.google.com) or [NASA World Wind](http://worldwind.arc.nasa.gov)) designed to illustrate the engine design and rendering techniques described in our book, [3D Engine Design for Virtual Globes](http://www.virtualglobebook.com).  It is written in C# and uses the OpenGL 3.3 core profile via [OpenTK](http://www.opentk.com).  It is not a complete virtual globe application, but is rather a core engine and a number of runnable examples.
 
 OpenGlobe has the following features and capabilities:
 
