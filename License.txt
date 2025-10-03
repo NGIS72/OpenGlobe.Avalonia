@@ -1,0 +1,174 @@
+Copyright (c) 2009-2011 Contributors
+
+OpenGlobe is distributed under the MIT License.
+---------------------------------------------------------------------------
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+Also available at http://www.opensource.org/licenses/mit-license.php
+
+
+Third Parties
+---------------------------------------------------------------------------
+
+
+OpenGlobe uses OpenTK:
+
+  Copyright (c) 2006 - 2009 The Open Toolkit library.
+
+  Permission is hereby granted, free of charge, to any person obtaining a
+  copy of this software and associated documentation files (the "Software"),
+  to deal in the Software without restriction, including without limitation
+  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+  and/or sell copies of the Software, and to permit persons to whom the
+  Software is furnished to do so, subject to the following conditions
+
+  The above copyright notice and this permission notice shall be included
+  in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
+  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT 
+  OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
+  THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+  Also available at http://www.opentk.com/project/license
+
+
+OpenGlobe tests use NUnit:
+
+  Copyright (c) 2002-2008 Charlie Poole
+  Copyright (c) 2002-2004 James W. Newkirk, Michael C. Two, 
+  Alexei A. Vorontsov
+  Copyright (c) 2000-2002 Philip A. Craig
+
+  This software is provided 'as-is', without any express or implied 
+  warranty. In no event will the authors be held liable for any damages 
+  arising from the use of this software.
+
+  Permission is granted to anyone to use this software for any purpose, 
+  including commercial applications, and to alter it and redistribute it 
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not 
+  claim that you wrote the original software. If you use this software
+  in a product, an acknowledgment (see the following) in the product 
+  documentation is required.
+
+  Portions Copyright (c) 2002-2008 Charlie Poole or Copyright (c) 2002-2004
+  James W. Newkirk, Michael C. Two, Alexei A. Vorontsov or Copyright (c) 
+  2000-2002 Philip A. Craig
+
+  2. Altered source versions must be plainly marked as such, and must not be 
+  misrepresented as being the original software.
+
+  3. This notice may not be removed or altered from any source distribution.
+
+
+  Also available at http://nunit.com/index.php?p=license&r=2.4.8
+
+
+Data
+---------------------------------------------------------------------------
+
+
+OpenGlobe uses data from NASA Visible Earth:
+
+   Data\Imagery\NASA\world.topo.200412.3x5400x2700.jpg
+      Reto Stockli, NASA Earth Observatory 
+      http://visibleearth.nasa.gov/view_rec.php?id=7135
+
+   Data\Imagery\NASA\world_topo_bathy_200411_3x5400x2700.jpg
+      Reto Stockli, NASA Earth Observatory 
+      http://visibleearth.nasa.gov/view_rec.php?id=7110
+
+   Data\Imagery\NASA\land_ocean_ice_lights_2048.jpg
+      Data courtesy Marc Imhoff of NASA GSFC and Christopher Elvidge of 
+      NOAA NGDC. Image by Craig Mayhew and Robert Simmon, NASA GSFC. 
+      http://visibleearth.nasa.gov/view_rec.php?id=1438
+
+   Terms of use:  http://visibleearth.nasa.gov/useterms.php
+
+
+OpenGlobe uses data from Natural Earth:
+
+   Free vector and raster map data @ naturalearthdata.com.
+
+   Data\Imagery\NaturalEarth\NE2_50M_SR_W.jpg
+      http://www.naturalearthdata.com/downloads/50m-natural-earth-2/
+      50m-natural-earth-ii-with-shaded-relief-and-water/
+
+   Data\Vector\NaturalEarth\110m-admin-1-states-provinces-lines-shp
+      http://www.naturalearthdata.com/downloads/110m-cultural-vectors/
+      110m-admin-1-states-provinces/
+
+   Data\Vector\NaturalEarth\50m-rivers-lake-centerlines
+      http://www.naturalearthdata.com/downloads/50m-physical-vectors/
+      50m-rivers-lake-centerlines/
+
+   Data\Vector\NaturalEarth\110m-admin-0-countries
+      http://www.naturalearthdata.com/downloads/110m-cultural-vectors/
+      110m-admin-0-countries/
+
+   Data\Vector\NaturalEarth\110m-populated-places-simple
+      http://www.naturalearthdata.com/downloads/110m-cultural-vectors/
+      110m-populated-places/
+
+   Terms of use:  http://www.naturalearthdata.com/about/terms-of-use/
+
+
+OpenGlobe uses data from the National Atlas of the United States of America:
+
+   Data\Vector\NationalAtlasOfTheUnitedStatesOfAmerica\airprtx020
+
+   Data\Vector\NationalAtlasOfTheUnitedStatesOfAmerica\amtrakx020
+      Research and Innovative Technology Administration's Bureau of 
+      Transportation Statistics (RITA/BTS) National Transportation 
+      Atlas Databases (NTAD) 2005
+
+   http://www.nationalatlas.gov/atlasftp.html
+
+
+OpenGlobe uses data from USGS and The University of Washington:
+
+   Terrain\ps-e.lg.jpg
+   Imagery\USGS\ps_texture_1k.png
+      http://www.cc.gatech.edu/projects/large_models/ps.html
+
+   Acknowledgements from above website:
+
+      Data is obtained from The United States Geological Survey (USGS), 
+      made available by The University of Washington. The dataset provided 
+      here is a subset extracted by the paper authors from the original 
+      dataset, which can be found here:
+      http://duff.geology.washington.edu/data/raster/tenmeter/onebytwo10/
+
+
+OpenGlobe uses icons from Yusuke Kamiyamane
+
+   http://p.yusukekamiyamane.com/
+
+   Data\Icons\YusukeKamiyamane
+      Copyright (C) 2010 Yusuke Kamiyamane. All rights reserved.
+      The icons are licensed under a Creative Commons Attribution
+      3.0 license. <http://creativecommons.org/licenses/by/3.0/>

@@ -1,0 +1,78 @@
+﻿#region License
+//
+// (C) Copyright 2010 Patrick Cozzi and Deron Ohlarik
+//
+// Distributed under the MIT License.
+// See License.txt or http://www.opensource.org/licenses/mit-license.php.
+//
+#endregion
+
+namespace OpenGlobe.Core
+{
+    public struct GeodeticExtent : IEquatable<GeodeticExtent>
+    {
+        public GeodeticExtent(double west, double south, double east, double north)
+        {
+            _west = west;
+            _south = south;
+            _east = east;
+            _north = north;
+        }
+
+        public GeodeticExtent(Geodetic2D bottomLeft, Geodetic2D topRight)
+        {
+            _west = bottomLeft.Longitude;
+            _south = bottomLeft.Latitude;
+            _east = topRight.Longitude;
+            _north = topRight.Latitude;
+        }
+
+        public double West => _west;
+
+        public double South => _south;
+
+        public double East => _east;
+
+        public double North => _north;
+
+        public bool Equals(GeodeticExtent other)
+        {
+            return _west == other._west &&
+                   _south == other._south &&
+                   _east == other._east &&
+                   _north == other._north;
+        }
+
+        public static bool operator ==(GeodeticExtent left, GeodeticExtent right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(GeodeticExtent left, GeodeticExtent right)
+        {
+            return !left.Equals(right);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is GeodeticExtent)
+            {
+                return Equals((GeodeticExtent)obj);
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return _west.GetHashCode() ^
+                   _south.GetHashCode() ^
+                   _east.GetHashCode() ^
+                   _north.GetHashCode();
+        }
+
+        private readonly double _west;
+        private readonly double _south;
+        private readonly double _east;
+        private readonly double _north;
+    }
+}

@@ -1,0 +1,170 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Renderer\GL3x\GLSL\BuiltinFunctions.glsl" />
+    <None Remove="Scene\Globes\DayNight\Shaders\GlobeFS.glsl" />
+    <None Remove="Scene\Globes\DayNight\Shaders\GlobeVS.glsl" />
+    <None Remove="Scene\Globes\DayNight\Shaders\ViewportQuadFS.glsl" />
+    <None Remove="Scene\Globes\DayNight\Shaders\ViewportQuadVS.glsl" />
+    <None Remove="Scene\Globes\LatitudeLongitudeGrid\Shaders\GlobeFS.glsl" />
+    <None Remove="Scene\Globes\LatitudeLongitudeGrid\Shaders\GlobeVS.glsl" />
+    <None Remove="Scene\Globes\RayCasted\Shaders\GlobeFS.glsl" />
+    <None Remove="Scene\Globes\RayCasted\Shaders\GlobeVS.glsl" />
+    <None Remove="Scene\Globes\RayCasted\Shaders\SolidShadedGlobeFS.glsl" />
+    <None Remove="Scene\Globes\Tessellated\Shaders\GlobeFS.glsl" />
+    <None Remove="Scene\Globes\Tessellated\Shaders\GlobeHPVS.glsl" />
+    <None Remove="Scene\Globes\Tessellated\Shaders\GlobeVS.glsl" />
+    <None Remove="Scene\Renderables\BillboardCollection\Shaders\BillboardsFS.glsl" />
+    <None Remove="Scene\Renderables\BillboardCollection\Shaders\BillboardsGS.glsl" />
+    <None Remove="Scene\Renderables\BillboardCollection\Shaders\BillboardsVS.glsl" />
+    <None Remove="Scene\Renderables\HeadsUpDisplay\Shaders\HeadsUpDisplayFS.glsl" />
+    <None Remove="Scene\Renderables\HeadsUpDisplay\Shaders\HeadsUpDisplayGS.glsl" />
+    <None Remove="Scene\Renderables\HeadsUpDisplay\Shaders\HeadsUpDisplayVS.glsl" />
+    <None Remove="Scene\Renderables\Plane\Shaders\FillFS.glsl" />
+    <None Remove="Scene\Renderables\Plane\Shaders\FillVS.glsl" />
+    <None Remove="Scene\Renderables\Plane\Shaders\LineFS.glsl" />
+    <None Remove="Scene\Renderables\Plane\Shaders\LineGS.glsl" />
+    <None Remove="Scene\Renderables\Plane\Shaders\LineVS.glsl" />
+    <None Remove="Scene\Renderables\Polygon\Shaders\PolygonFS.glsl" />
+    <None Remove="Scene\Renderables\Polygon\Shaders\PolygonVS.glsl" />
+    <None Remove="Scene\Renderables\PolylineOnTerrain\Shaders\PolylineOnTerrainShadowVolumeFS.glsl" />
+    <None Remove="Scene\Renderables\PolylineOnTerrain\Shaders\PolylineOnTerrainShadowVolumeGS.glsl" />
+    <None Remove="Scene\Renderables\PolylineOnTerrain\Shaders\PolylineOnTerrainShadowVolumeVS.glsl" />
+    <None Remove="Scene\Renderables\PolylineOnTerrain\Shaders\PolylineOnTerrainWallFS.glsl" />
+    <None Remove="Scene\Renderables\PolylineOnTerrain\Shaders\PolylineOnTerrainWallGS.glsl" />
+    <None Remove="Scene\Renderables\PolylineOnTerrain\Shaders\PolylineOnTerrainWallVS.glsl" />
+    <None Remove="Scene\Renderables\Polyline\OutlinedPolylineGeometryShader\PolylineFS.glsl" />
+    <None Remove="Scene\Renderables\Polyline\OutlinedPolylineGeometryShader\PolylineGS.glsl" />
+    <None Remove="Scene\Renderables\Polyline\OutlinedPolylineGeometryShader\PolylineVS.glsl" />
+    <None Remove="Scene\Renderables\Polyline\OutlinedPolylineTexture\PolylineFS.glsl" />
+    <None Remove="Scene\Renderables\Polyline\OutlinedPolylineTexture\PolylineGS.glsl" />
+    <None Remove="Scene\Renderables\Polyline\OutlinedPolylineTexture\PolylineVS.glsl" />
+    <None Remove="Scene\Renderables\Polyline\Polyline\PolylineFS.glsl" />
+    <None Remove="Scene\Renderables\Polyline\Polyline\PolylineGS.glsl" />
+    <None Remove="Scene\Renderables\Polyline\Polyline\PolylineVS.glsl" />
+    <None Remove="Scene\Renderables\ViewportQuad\Shaders\ViewportQuadFS.glsl" />
+    <None Remove="Scene\Renderables\ViewportQuad\Shaders\ViewportQuadVS.glsl" />
+    <None Remove="Scene\Renderables\Wireframe\Shaders\WireframeFS.glsl" />
+    <None Remove="Scene\Renderables\Wireframe\Shaders\WireframeGS.glsl" />
+    <None Remove="Scene\Renderables\Wireframe\Shaders\WireframeVS.glsl" />
+    <None Remove="Scene\Terrain\ClipmapTerrain\ClipmapComputeNormalsFS.glsl" />
+    <None Remove="Scene\Terrain\ClipmapTerrain\ClipmapComputeNormalsVS.glsl" />
+    <None Remove="Scene\Terrain\ClipmapTerrain\ClipmapUpdateFS.glsl" />
+    <None Remove="Scene\Terrain\ClipmapTerrain\ClipmapUpdateVS.glsl" />
+    <None Remove="Scene\Terrain\ClipmapTerrain\ClipmapUpsampleFS.glsl" />
+    <None Remove="Scene\Terrain\ClipmapTerrain\ClipmapUpsampleVS.glsl" />
+    <None Remove="Scene\Terrain\ClipmapTerrain\GlobeClipmapFS.glsl" />
+    <None Remove="Scene\Terrain\ClipmapTerrain\GlobeClipmapVS.glsl" />
+    <None Remove="Scene\Terrain\RayCastedTerrainTile\TerrainFS.glsl" />
+    <None Remove="Scene\Terrain\RayCastedTerrainTile\TerrainVS.glsl" />
+    <None Remove="Scene\Terrain\TriangleMeshTerrainTile\SilhouetteFS.glsl" />
+    <None Remove="Scene\Terrain\TriangleMeshTerrainTile\SilhouetteGS.glsl" />
+    <None Remove="Scene\Terrain\TriangleMeshTerrainTile\SilhouetteVS.glsl" />
+    <None Remove="Scene\Terrain\TriangleMeshTerrainTile\TerrainFS.glsl" />
+    <None Remove="Scene\Terrain\TriangleMeshTerrainTile\TerrainVS.glsl" />
+    <None Remove="Scene\Terrain\VertexDisplacementMapTerrainTile\NormalsFS.glsl" />
+    <None Remove="Scene\Terrain\VertexDisplacementMapTerrainTile\NormalsGS.glsl" />
+    <None Remove="Scene\Terrain\VertexDisplacementMapTerrainTile\NormalsVS.glsl" />
+    <None Remove="Scene\Terrain\VertexDisplacementMapTerrainTile\TerrainFS.glsl" />
+    <None Remove="Scene\Terrain\VertexDisplacementMapTerrainTile\TerrainVS.glsl" />
+    <None Remove="Scene\Terrain\VertexDisplacementMapTerrainTile\WireframeFS.glsl" />
+    <None Remove="Scene\Terrain\VertexDisplacementMapTerrainTile\WireframeGS.glsl" />
+    <None Remove="Scene\Terrain\VertexDisplacementMapTerrainTile\WireframeVS.glsl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Renderer\GL3x\GLSL\BuiltinFunctions.glsl" />
+    <EmbeddedResource Include="Scene\Globes\DayNight\Shaders\GlobeFS.glsl" />
+    <EmbeddedResource Include="Scene\Globes\DayNight\Shaders\GlobeVS.glsl" />
+    <EmbeddedResource Include="Scene\Globes\DayNight\Shaders\ViewportQuadFS.glsl" />
+    <EmbeddedResource Include="Scene\Globes\DayNight\Shaders\ViewportQuadVS.glsl" />
+    <EmbeddedResource Include="Scene\Globes\LatitudeLongitudeGrid\Shaders\GlobeFS.glsl" />
+    <EmbeddedResource Include="Scene\Globes\LatitudeLongitudeGrid\Shaders\GlobeVS.glsl" />
+    <EmbeddedResource Include="Scene\Globes\RayCasted\Shaders\GlobeFS.glsl" />
+    <EmbeddedResource Include="Scene\Globes\RayCasted\Shaders\GlobeVS.glsl" />
+    <EmbeddedResource Include="Scene\Globes\RayCasted\Shaders\SolidShadedGlobeFS.glsl" />
+    <EmbeddedResource Include="Scene\Globes\Tessellated\Shaders\GlobeFS.glsl" />
+    <EmbeddedResource Include="Scene\Globes\Tessellated\Shaders\GlobeHPVS.glsl" />
+    <EmbeddedResource Include="Scene\Globes\Tessellated\Shaders\GlobeVS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\BillboardCollection\Shaders\BillboardsFS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\BillboardCollection\Shaders\BillboardsGS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\BillboardCollection\Shaders\BillboardsVS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\HeadsUpDisplay\Shaders\HeadsUpDisplayFS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\HeadsUpDisplay\Shaders\HeadsUpDisplayGS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\HeadsUpDisplay\Shaders\HeadsUpDisplayVS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Plane\Shaders\FillFS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Plane\Shaders\FillVS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Plane\Shaders\LineFS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Plane\Shaders\LineGS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Plane\Shaders\LineVS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Polygon\Shaders\PolygonFS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Polygon\Shaders\PolygonVS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\PolylineOnTerrain\Shaders\PolylineOnTerrainShadowVolumeFS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\PolylineOnTerrain\Shaders\PolylineOnTerrainShadowVolumeGS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\PolylineOnTerrain\Shaders\PolylineOnTerrainShadowVolumeVS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\PolylineOnTerrain\Shaders\PolylineOnTerrainWallFS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\PolylineOnTerrain\Shaders\PolylineOnTerrainWallGS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\PolylineOnTerrain\Shaders\PolylineOnTerrainWallVS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Polyline\OutlinedPolylineGeometryShader\PolylineFS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Polyline\OutlinedPolylineGeometryShader\PolylineGS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Polyline\OutlinedPolylineGeometryShader\PolylineVS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Polyline\OutlinedPolylineTexture\PolylineFS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Polyline\OutlinedPolylineTexture\PolylineGS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Polyline\OutlinedPolylineTexture\PolylineVS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Polyline\Polyline\PolylineFS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Polyline\Polyline\PolylineGS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Polyline\Polyline\PolylineVS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\ViewportQuad\Shaders\ViewportQuadFS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\ViewportQuad\Shaders\ViewportQuadVS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Wireframe\Shaders\WireframeFS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Wireframe\Shaders\WireframeGS.glsl" />
+    <EmbeddedResource Include="Scene\Renderables\Wireframe\Shaders\WireframeVS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\ClipmapTerrain\ClipmapComputeNormalsFS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\ClipmapTerrain\ClipmapComputeNormalsVS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\ClipmapTerrain\ClipmapUpdateFS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\ClipmapTerrain\ClipmapUpdateVS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\ClipmapTerrain\ClipmapUpsampleFS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\ClipmapTerrain\ClipmapUpsampleVS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\ClipmapTerrain\GlobeClipmapFS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\ClipmapTerrain\GlobeClipmapVS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\RayCastedTerrainTile\TerrainFS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\RayCastedTerrainTile\TerrainVS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\TriangleMeshTerrainTile\SilhouetteFS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\TriangleMeshTerrainTile\SilhouetteGS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\TriangleMeshTerrainTile\SilhouetteVS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\TriangleMeshTerrainTile\TerrainFS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\TriangleMeshTerrainTile\TerrainVS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\VertexDisplacementMapTerrainTile\NormalsFS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\VertexDisplacementMapTerrainTile\NormalsGS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\VertexDisplacementMapTerrainTile\NormalsVS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\VertexDisplacementMapTerrainTile\TerrainFS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\VertexDisplacementMapTerrainTile\TerrainVS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\VertexDisplacementMapTerrainTile\WireframeFS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\VertexDisplacementMapTerrainTile\WireframeGS.glsl" />
+    <EmbeddedResource Include="Scene\Terrain\VertexDisplacementMapTerrainTile\WireframeVS.glsl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenTK" Version="4.9.4" />
+    <PackageReference Include="OpenTK.Core" Version="4.9.4" />
+    <PackageReference Include="OpenTK.Graphics" Version="4.9.4" />
+    <PackageReference Include="OpenTK.Mathematics" Version="4.9.4" />
+    <PackageReference Include="SkiaSharp" Version="2.88.9" />
+    <PackageReference Include="Avalonia" Version="11.3.6" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="SkiaSharp" />
+    <Using Include="SkiaSharp.SKBitmap">
+      <Alias>Bitmap</Alias>
+    </Using>
+  </ItemGroup>
+
+</Project>

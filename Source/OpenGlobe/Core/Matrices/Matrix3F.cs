@@ -1,0 +1,132 @@
+﻿#region License
+//
+// (C) Copyright 2010 Patrick Cozzi and Kevin Ring
+//
+// Distributed under the MIT License.
+// See License.txt or http://www.opensource.org/licenses/mit-license.php.
+//
+#endregion
+
+using System.Globalization;
+
+namespace OpenGlobe.Core
+{
+    /// <summary>
+    /// 3x3 matrix - 3 columns and 3 rows.
+    /// </summary>
+    public class Matrix3F
+    {
+        public Matrix3F()
+        {
+            _values = new float[NumberOfComponents];
+        }
+
+        public Matrix3F(float value)
+        {
+            _values = new float[] 
+            { 
+                value, value, value,
+                value, value, value,
+                value, value, value
+            };
+        }
+
+        public Matrix3F(
+            float column0row0, float column1row0, float column2row0,
+            float column0row1, float column1row1, float column2row1,
+            float column0row2, float column1row2, float column2row2)
+        {
+            _values = new float[] 
+            { 
+                column0row0, column0row1, column0row2,
+                column1row0, column1row1, column1row2,
+                column2row0, column2row1, column2row2,
+            };
+        }
+
+        public int NumberOfComponents => 9;
+
+        public float Column0Row0 => _values[0];
+        public float Column0Row1 => _values[1];
+        public float Column0Row2 => _values[2];
+
+        public float Column1Row0 => _values[3];
+        public float Column1Row1 => _values[4];
+        public float Column1Row2 => _values[5];
+
+        public float Column2Row0 => _values[6];
+        public float Column2Row1 => _values[7];
+        public float Column2Row2 => _values[8];
+
+        public bool Equals(Matrix3F other)
+        {
+            if (Matrix3F.ReferenceEquals(other, null))
+            {
+                return false;
+            }
+
+            for (int i = 0; i < _values.Length; ++i)
+            {
+                if (!_values[i].Equals(other._values[i]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public static bool operator ==(Matrix3F left, Matrix3F right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Matrix3F left, Matrix3F right)
+        {
+            return !left.Equals(right);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Matrix3F)
+            {
+                return Equals((Matrix3F)obj);
+            }
+            return false;
+        }
+
+        public override string ToString()
+        {
+            return string.Format(CultureInfo.CurrentCulture,
+                "Rows: \n({0:n}, {1:n}, {2:n}) \n({3:n}, {4:n}, {5:n}) \n({6:n}, {7:n}, {8:n}) \n({9:n}, {10:n}, {11:n})",
+                Column0Row0, Column1Row0, Column2Row0,
+                Column0Row1, Column1Row1, Column2Row1,
+                Column0Row2, Column1Row2, Column2Row2);
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = Convert.ToInt32(_values[0]);
+
+            for (int i = 1; i < _values.Length; ++i)
+            {
+                hashCode = hashCode ^ Convert.ToInt32(_values[i]);
+
+            }
+
+            return hashCode;
+        }
+
+        /// <summary>
+        /// Shame on you if you change elements in this array.  This type is supposed to be immutable.
+        /// </summary>
+        public float[] ReadOnlyColumnMajorValues => _values;
+
+        public static readonly Matrix3F Identity = new Matrix3F(
+            1.0f, 0.0f, 0.0f,
+            0.0f, 1.0f, 0.0f,
+            0.0f, 0.0f, 1.0f);
+
+        private readonly float[] _values;       // Column major
+    }
+}

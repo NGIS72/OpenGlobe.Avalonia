@@ -1,0 +1,74 @@
+﻿#region License
+//
+// (C) Copyright 2009 Patrick Cozzi and Deron Ohlarik
+//
+// Distributed under the MIT License.
+// See License.txt or http://www.opensource.org/licenses/mit-license.php.
+//
+#endregion
+
+namespace OpenGlobe.Core
+{
+    public class VertexAttributeCollection : ICollection<VertexAttribute>
+    {
+        public void Add(VertexAttribute vertexAttribute)
+        {
+            m_collection.Add(vertexAttribute.Name, vertexAttribute);
+        }
+
+        public void Clear()
+        {
+            m_collection.Clear();
+        }
+
+        public bool Contains(VertexAttribute vertexAttribute)
+        {
+            return Contains(vertexAttribute.Name);
+        }
+
+        public bool Contains(string vertexAttributeName)
+        {
+            return m_collection.ContainsKey(vertexAttributeName);
+        }
+
+        public void CopyTo(VertexAttribute[] array, int arrayIndex)
+        {
+            ICollection<VertexAttribute> values = m_collection.Values;
+            values.CopyTo(array, arrayIndex);
+        }
+
+        public int Count => m_collection.Count;
+
+        bool ICollection<VertexAttribute>.IsReadOnly => false;
+
+        public bool Remove(VertexAttribute item)
+        {
+            return Remove(item.Name);
+        }
+
+        public bool Remove(string vertexAttributeName)
+        {
+            return m_collection.Remove(vertexAttributeName);
+        }
+
+        public IEnumerator<VertexAttribute> GetEnumerator()
+        {
+            ICollection<VertexAttribute> values = m_collection.Values;
+            return values.GetEnumerator();
+        }
+
+#if !CSToJava
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+#endif
+
+        public VertexAttribute this[string vertexAttributeName]
+        {
+            get { return m_collection[vertexAttributeName]; }
+        }
+
+        private Dictionary<string, VertexAttribute> m_collection = new Dictionary<string, VertexAttribute>();
+    }
+}
