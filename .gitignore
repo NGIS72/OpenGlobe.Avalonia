@@ -4,3 +4,4 @@ bin/
 *.docstates
 
 /.vs
+/Source/.vs/OpenGlobe/FileContentIndex
