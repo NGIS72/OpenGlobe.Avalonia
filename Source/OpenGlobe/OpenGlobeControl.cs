@@ -3,9 +3,11 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Logging;
+using Avalonia.Media;
 using Avalonia.OpenGL;
 using Avalonia.OpenGL.Controls;
 using Avalonia.Platform;
+using Avalonia.Rendering;
 using Avalonia.Rendering.Composition;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
@@ -17,13 +19,17 @@ using System.Threading.Tasks;
 
 namespace OpenGlobe
 {
-    public class OpenGlobeControl : OpenGlControlBase
+    public class OpenGlobeControl : OpenGlControlBase, ICustomHitTest
     {
         private Context m_Context;
         private InputElement m_Root;
         private IScene m_Scene, m_NextScene;
         //private SceneWrapper m_SceneWrapper;
 
+        public OpenGlobeControl()
+        {
+            
+        }
 
         public event EventHandler<OpenGlobeContextEventArgs> PreRender;
         public event EventHandler<OpenGlobeContextEventArgs> PostRender;
@@ -194,6 +200,7 @@ namespace OpenGlobe
             IsReady = false;
 
             m_Scene?.Unload(m_Context);
+            m_IsEntered = false;
         }
 
         protected override void OnOpenGlRender(GlInterface gl, int fb)
@@ -212,7 +219,16 @@ namespace OpenGlobe
 
             var args = new OpenGlobeContextEventArgs(m_Context, scene);
 
-            PreRender?.Invoke(this, args);
+            //if (m_IsEntered)
+            //{
+            //    scene.ClearState.Color = Colors.Gray;
+            //}
+            //else
+            //{
+            //    scene.ClearState.Color = Colors.Black;
+            //}
+
+                PreRender?.Invoke(this, args);
             
             if (scene != null)
             {
@@ -244,9 +260,10 @@ namespace OpenGlobe
         private void RegisterPointerEvents()
         {
             m_Root = this.FindAncestorOfType<DockPanel>() as InputElement ?? this.FindAncestorOfType<Window>();
+            //m_Root = this.FindAncestorOfType<UserControl>() as InputElement ?? this.FindAncestorOfType<Window>();
             if (m_Root != null)
             {
-                var routingStrategy = RoutingStrategies.Direct | RoutingStrategies.Tunnel/* | RoutingStrategies.Bubble*/;
+                var routingStrategy = RoutingStrategies.Direct | RoutingStrategies.Tunnel | RoutingStrategies.Bubble;
 
                 m_Root.AddHandler(PointerMovedEvent, RootPointerMoved, routingStrategy);
                 m_Root.AddHandler(PointerCaptureLostEvent, RootPointerCaptureLost, routingStrategy);
@@ -278,34 +295,60 @@ namespace OpenGlobe
             }
             m_Root = null;
         }
-
+        private bool m_IsEntered;
         private void RootPointerCaptureLost(object sender, PointerCaptureLostEventArgs e)
         {
-            m_PointerCaptureLost = e;
+            if (m_IsEntered) m_PointerCaptureLost = e;
         }
         private void RootPointerEntered(object sender, PointerEventArgs e)
         {
-            m_PointerEntered = e;
+            var point = e.GetPosition(this);
+            if (point.X >= 0 && point.X < Bounds.Width && point.Y >= 0 && point.Y < Bounds.Height)
+            {
+                m_IsEntered = true;
+                m_PointerEntered = e;
+                Console.WriteLine(Name + " - ENTERED");
+            }
+            else
+            {
+                m_IsEntered = false;
+                Console.WriteLine(Name + " - exited");
+            }
         }
         private void RootPointerExited(object sender, PointerEventArgs e)
         {
-           m_PointerExit = e;
+            if (m_IsEntered)
+            {
+                m_IsEntered = false;
+                m_PointerExit = e;
+
+                Console.WriteLine(Name + " - exited");
+            }
         }
         private void RootPointerMoved(object sender, PointerEventArgs e)
         {
-            m_PointerMoved = e;
+            var point = e.GetPosition(this);
+            if (point.X >= 0 && point.X < Bounds.Width && point.Y >= 0 && point.Y < Bounds.Height)
+            {
+                if (m_IsEntered) m_IsEntered = true;
+                m_PointerMoved = e;
+            }
+            else
+            {
+                m_IsEntered = false;
+            }
         }
         private void RootPointerPressed(object sender, PointerPressedEventArgs e)
         {
-           m_PointerPressed = e;
+            if (m_IsEntered) m_PointerPressed = e;
         }
         private void RootPointerReleased(object sender, PointerReleasedEventArgs e)
         {
-            m_PointerReleased = e;
+            if (m_IsEntered) m_PointerReleased = e;
         }
         private void RootPointerWheelChanged(object sender, PointerWheelEventArgs e)
         {
-            m_PointerWheelChanged = e;
+            if (m_IsEntered) m_PointerWheelChanged = e;
         }
 
         #endregion
@@ -314,12 +357,25 @@ namespace OpenGlobe
 
         private void RootKeyDown(object sender, KeyEventArgs e)
         {
-            m_KeyDown = e;
+            if (m_IsEntered)
+            {
+                e.Handled = true;
+                m_KeyDown = e;
+            }
         }
 
         private void RootKeyUp(object sender, KeyEventArgs e)
         {
-            m_KeyUp = e;
+            if (m_IsEntered)
+            {
+                e.Handled = true;
+                m_KeyUp = e;
+            }
+        }
+
+        public bool HitTest(Point point)
+        {
+            return Bounds.Contains(point);
         }
 
         #endregion

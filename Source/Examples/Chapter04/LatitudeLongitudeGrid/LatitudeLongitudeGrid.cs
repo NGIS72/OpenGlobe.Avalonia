@@ -8,29 +8,27 @@
 #endregion
 
 using System;
-using System.Drawing;
 using System.Collections.Generic;
 
 using OpenGlobe.Core;
 using OpenGlobe.Renderer;
 using OpenGlobe.Scene;
 using SkiaSharp;
+using Avalonia.Media;
 
 namespace OpenGlobe.Examples
 {
     sealed class LatitudeLongitudeGrid : SceneBase, IDisposable
     {
-        private Context m_Context;
+        public Color Background { get; set; } = Colors.Black;
         public override void Load(Context context)
         {
             base.Load(context);
         
-            m_Context = context;
-
             Ellipsoid globeShape = Ellipsoid.Wgs84;
             Camera = new CameraLookAtPoint(SceneState.Camera, globeShape);
-            
 
+            ClearState.Color = Background;
             SceneState.Camera.PerspectiveNearPlaneDistance = 0.01 * globeShape.MaximumRadius;
             SceneState.Camera.PerspectiveFarPlaneDistance = 10.0 * globeShape.MaximumRadius;
             SceneState.Camera.ZoomToTarget(globeShape.MaximumRadius);
@@ -52,7 +50,7 @@ namespace OpenGlobe.Examples
                 new Vector2D(0.1, 0.1)));
 
             _globe = new LatitudeLongitudeGridGlobe(context);
-            _globe.Texture = context.Device.CreateTexture2D("NE2_50M_SR_W_4096.jpg", TextureFormat.RedGreenBlue8, false);
+            _globe.Texture = context.Device.CreateTexture2D("World.jpg", TextureFormat.RedGreenBlue8, false);
             _globe.Shape = globeShape;
             _globe.GridResolutions = new GridResolutionCollection(gridResolutions);
 

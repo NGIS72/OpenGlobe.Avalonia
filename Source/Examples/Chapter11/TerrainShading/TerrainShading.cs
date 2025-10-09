@@ -35,7 +35,7 @@ namespace OpenGlobe.Examples
             TerrainTile terrainTile = TerrainTile.FromBitmap("ps-e.lg.png");
             _tile = new VertexDisplacementMapTerrainTile(context, terrainTile);
             _tile.HeightExaggeration = 30;
-            _tile.ColorMapTexture = Device.CreateTexture2D("ps_texture_1k.png", TextureFormat.RedGreenBlue8, false);
+            _tile.ColorMapTexture = Device.CreateTexture2D("ps_texture_1k_b.png", TextureFormat.RedGreenBlue8, false);
             _tile.ColorRampHeightTexture = Device.CreateTexture2D("ColorRamp.jpg", TextureFormat.RedGreenBlue8, false);
             _tile.ColorRampSlopeTexture = Device.CreateTexture2D("ColorRampSlope.jpg", TextureFormat.RedGreenBlue8, false);
             _tile.BlendRampTexture = Device.CreateTexture2D("BlendRamp.jpg", TextureFormat.Red8, false);
