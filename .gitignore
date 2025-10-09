@@ -5,3 +5,5 @@ bin/
 
 /.vs
 .vs/
+/Source/Examples/Chapter11/TerrainShading/Properties/launchSettings.json
+/Source/Examples/Chapter11/TerrainShading/Chapter11TerrainShading.csproj.user
