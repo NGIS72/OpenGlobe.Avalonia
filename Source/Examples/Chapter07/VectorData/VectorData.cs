@@ -43,8 +43,8 @@ namespace OpenGlobe.Examples
             _globe = new DayNightGlobe(context);
             _globe.Shape = globeShape;
             _globe.UseAverageDepth = true;
-            _globe.DayTexture = context.Device.CreateTexture2D("NE2_50M_SR_W_4096.jpg", TextureFormat.RedGreenBlue8, false);
-            _globe.NightTexture = context.Device.CreateTexture2D("land_ocean_ice_lights_2048.jpg", TextureFormat.RedGreenBlue8, false);
+            _globe.DayTexture = context.Device.CreateTexture2D("NE2_50M_SR_W_4096.jpg", TextureFormat.RedGreenBlueAlpha8, false);
+            _globe.NightTexture = context.Device.CreateTexture2D("land_ocean_ice_lights_2048.jpg", TextureFormat.RedGreenBlueAlpha8, false);
 
             _countries = new ShapefileRenderer("110m_admin_0_countries.shp", context, globeShape,
                 new ShapefileAppearance()
@@ -78,7 +78,7 @@ namespace OpenGlobe.Examples
             _hud = new HeadsUpDisplay(context);
             _hud.Color = Colors.Blue;
 
-            _showVectorData = true;
+            //_showVectorData = true;
 
             SceneState.DiffuseIntensity = 0.5f;
             SceneState.SpecularIntensity = 0.1f;
@@ -182,7 +182,7 @@ namespace OpenGlobe.Examples
             _dayTexture = Context.Device.CreateTexture2D(new Texture2DDescription(Width, Height, TextureFormat.RedGreenBlueAlpha8, false));
             _nightTexture = Context.Device.CreateTexture2D(new Texture2DDescription(Width, Height, TextureFormat.RedGreenBlueAlpha8, false));
             _blendTexture = Context.Device.CreateTexture2D(new Texture2DDescription(Width, Height, TextureFormat.Red32f, false));
-            _depthTexture = Context.Device.CreateTexture2D(new Texture2DDescription(Width, Height, TextureFormat.Depth24, false));
+            _depthTexture = Context.Device.CreateTexture2D(new Texture2DDescription(Width, Height, TextureFormat.Depth32f, false));
             
             _quad.DayTexture = _dayTexture;
             _quad.NightTexture = _nightTexture;

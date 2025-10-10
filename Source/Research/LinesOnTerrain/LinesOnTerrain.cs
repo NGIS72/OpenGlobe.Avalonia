@@ -30,7 +30,7 @@ namespace OpenGlobe.Research
         {
             base.Load(context);
         
-            SceneState.Camera.PerspectiveFarPlaneDistance = 4096;
+            SceneState.Camera.PerspectiveFarPlaneDistance = 16096;
             SceneState.Camera.PerspectiveNearPlaneDistance = 10;
             
             _instructions = new HeadsUpDisplay(context);
@@ -41,15 +41,13 @@ namespace OpenGlobe.Research
                 TextureFormat.RedGreenBlueAlpha8, false);
             _instructions.Color = Colors.LightBlue;
 
-            ///////////////////////////////////////////////////////////////////
-
-            TerrainTile terrainTile = TerrainTile.FromBitmap(@"ps-e.lg.png");
+            var terrainTile = TerrainTile.FromBitmap(@"ps-e.lg.png");
             _tile = new TriangleMeshTerrainTile(context, terrainTile);
             _tile.HeightExaggeration = 30.0f;
 
             ///////////////////////////////////////////////////////////////////
 
-            double tileRadius = Math.Max(terrainTile.Resolution.X, terrainTile.Resolution.Y) * 0.5;
+            var tileRadius = Math.Max(terrainTile.Resolution.X, terrainTile.Resolution.Y) * 0.5;
             var camera = new CameraLookAtPoint(SceneState.Camera, Ellipsoid.UnitSphere);
             camera.CenterPoint = new Vector3D(terrainTile.Resolution.X * 0.5, terrainTile.Resolution.Y * 0.5, 0.0);
             Camera = camera;
@@ -129,7 +127,6 @@ namespace OpenGlobe.Research
             // Render the line on terrain
             //
             _polylineOnTerrain.Render(context, SceneState, _tile.SilhouetteTexture, _tile.DepthTexture);
-
             //
             // Render the instructions
             //

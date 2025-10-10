@@ -24,7 +24,7 @@ namespace OpenGlobe.Renderer
 
     public abstract class Context
     {
-        public abstract void MakeCurrent();
+        
         public virtual VertexArray CreateVertexArray(Mesh mesh, ShaderVertexAttributeCollection shaderAttributes, BufferHint usageHint)
         {
             return CreateVertexArray(Device.CreateMeshBuffers(mesh, shaderAttributes, usageHint));
@@ -50,7 +50,7 @@ namespace OpenGlobe.Renderer
         public abstract TextureUnits TextureUnits { get; }
         public abstract Avalonia.PixelRect Viewport { get; set; }
         public abstract Framebuffer Framebuffer { get; set; }
-
+        public abstract int FramebufferMainName { get; set; }
         public Device Device { get; internal set; }
 
         public abstract void Clear(ClearState clearState);

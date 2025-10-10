@@ -24,9 +24,9 @@ namespace OpenGlobe.Renderer.GL3x
             GL.BindFramebuffer(FramebufferTarget.Framebuffer, _name.Value);
         }
 
-        internal static void UnBind()
+        internal static void UnBind(int framebuffer)
         {
-            GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
+            GL.BindFramebuffer(FramebufferTarget.Framebuffer, framebuffer);
         }
 
         internal void Clean()

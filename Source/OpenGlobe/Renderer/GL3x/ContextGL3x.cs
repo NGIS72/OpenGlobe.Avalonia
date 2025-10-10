@@ -103,10 +103,6 @@ namespace OpenGlobe.Renderer.GL3x
 
         #region Context Members
 
-        public override void MakeCurrent()
-        {
-            //_gameWindow.MakeCurrent();
-        }
 
         public override VertexArray CreateVertexArray()
         {
@@ -147,6 +143,8 @@ namespace OpenGlobe.Renderer.GL3x
             get { return _setFramebuffer; }
             set { _setFramebuffer = (FramebufferGL3x)value; }
         }
+
+        public override int FramebufferMainName { get; set; }
 
         public override void Clear(ClearState clearState)
         {
@@ -593,7 +591,7 @@ namespace OpenGlobe.Renderer.GL3x
                 }
                 else
                 {
-                    FramebufferGL3x.UnBind();
+                    FramebufferGL3x.UnBind(FramebufferMainName);
                 }
 
                 _boundFramebuffer = _setFramebuffer;

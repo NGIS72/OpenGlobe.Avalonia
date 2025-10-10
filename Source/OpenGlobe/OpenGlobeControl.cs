@@ -206,6 +206,7 @@ namespace OpenGlobe
         protected override void OnOpenGlRender(GlInterface gl, int fb)
         {
             if (m_Context == null) return;
+            m_Context.FramebufferMainName = fb;
 
             //gl.Viewport(0, 0, (int)Bounds.Width, (int)Bounds.Height);
             m_Context.Viewport = new PixelRect(0, 0, (int)Bounds.Width, (int)Bounds.Height);
