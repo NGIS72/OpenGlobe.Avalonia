@@ -206,39 +206,40 @@ namespace OpenGlobe
         protected override void OnOpenGlRender(GlInterface gl, int fb)
         {
             if (m_Context == null) return;
+            
             m_Context.FramebufferMainName = fb;
-
-            //gl.Viewport(0, 0, (int)Bounds.Width, (int)Bounds.Height);
             m_Context.Viewport = new PixelRect(0, 0, (int)Bounds.Width, (int)Bounds.Height);
-            var scene = GetScene();
 
-            TryRunActions(scene);
+            try
+            {
+                
+                var scene = GetScene();
 
-            var camera = scene?.SceneState?.Camera;
-            if (camera != null)
-                camera.AspectRatio = Bounds.Width / (double)Bounds.Height;
+                TryRunActions(scene);
 
-            var args = new OpenGlobeContextEventArgs(m_Context, scene);
+                var camera = scene?.SceneState?.Camera;
+                if (camera != null)
+                    camera.AspectRatio = Bounds.Width / (double)Bounds.Height;
 
-            //if (m_IsEntered)
-            //{
-            //    scene.ClearState.Color = Colors.Gray;
-            //}
-            //else
-            //{
-            //    scene.ClearState.Color = Colors.Black;
-            //}
+                var args = new OpenGlobeContextEventArgs(m_Context, scene);
+
 
                 PreRender?.Invoke(this, args);
-            
-            if (scene != null)
-            {
-                scene.PreRender(m_Context);
-                scene.Render(m_Context);
-                scene.PostRender(m_Context);
-            }
 
-            PostRender?.Invoke(this, args);
+                if (scene != null)
+                {
+                    scene.PreRender(m_Context);
+                    scene.Render(m_Context);
+                    scene.PostRender(m_Context);
+                }
+
+                PostRender?.Invoke(this, args);
+            }
+            finally
+            {
+                gl.Finish();
+            }
+            ;
 
             Dispatcher.UIThread.Post(RequestNextFrameRendering, DispatcherPriority.Background);
         }
